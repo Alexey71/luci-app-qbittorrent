@@ -21,7 +21,6 @@ PKG_LICENSE_FILES:=COPYING
 PKG_CPE_ID:=cpe:/a:qbittorrent:qbittorrent
 
 PKG_BUILD_DEPENDS:=qt6tools/host
-
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
 
@@ -32,14 +31,7 @@ define Package/qbittorrent
 	SECTION:=net
 	CATEGORY:=Network
 	SUBMENU:=BitTorrent
-	DEPENDS:=+USE_GLIBC:librt +USE_GLIBC:libpthread +libgcc +libstdcpp \
-		+rblibtorrent \
-		+libQt6Core \
-		+libQt6Network \
-		+libQt6Sql \
-		+libQt6Xml \
-		+qt6-plugin-libqopensslbackend \
-		+qt6-plugin-libqsqlite
+	DEPENDS:=+rblibtorrent +libQt6Core +libQt6Network +libQt6Sql +libQt6Xml +qt6-plugin-libqopensslbackend +qt6-plugin-libqsqlite
 	TITLE:=bittorrent client programmed in C++ / Qt
 	URL:=https://www.qbittorrent.org/
 	PROVIDES:=qBittorrent
@@ -61,10 +53,6 @@ CMAKE_OPTIONS += \
 	-DGUI=OFF \
 	-DVERBOSE_CONFIGURE=ON \
 	-DQT_ADDITIONAL_PACKAGES_PREFIX_PATH=$(STAGING_DIR_HOSTPKG)
-
-ifdef CONFIG_USE_GLIBC
-  TARGET_LDFLAGS += -ldl -lrt -lpthread
-endif
 
 define Package/qbittorrent/conffiles
 /etc/config/qbittorrent
