@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rblibtorrent
-PKG_VERSION:=2.0.10
+PKG_VERSION:=2.0.11
 PKG_RELEASE=2024-08-04
 
 PKG_SOURCE_PROTO:=git
